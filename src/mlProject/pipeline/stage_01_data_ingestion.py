@@ -6,7 +6,7 @@ from mlProject import logger
 
 STAGE_NAME = "Data Ingestion stage"
 
-class DataIngestionPipeline:
+class DataIngestioTrainingPipeline:
     def __init__(self):
         pass
 
@@ -21,7 +21,7 @@ class DataIngestionPipeline:
 if __name__ == "__main__":
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = DataIngestionPipeline()
+        obj = DataIngestioTrainingPipeline()
         obj.main()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
