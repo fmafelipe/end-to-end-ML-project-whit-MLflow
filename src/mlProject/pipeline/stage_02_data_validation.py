@@ -14,7 +14,11 @@ class DataValidationTrainingPipeline:
         config = ConfigurationManager()
         data_validation_config = config.get_data_validation_config()
         data_validation = DataValidation(config=data_validation_config)
-        data_validation.validate_all_data()
+        status = data_validation.validate_all_data()
+        if status == False:
+            logger.info("Data validation failed")
+            raise Exception(f"Data validation failed, check file {data_validation_config.STATUS_FILE}")
+
 
 
 if __name__ == "__main__":
@@ -22,6 +26,7 @@ if __name__ == "__main__":
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = DataValidationTrainingPipeline()
         obj.main()
+
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
         logger.exception(e)
