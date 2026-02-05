@@ -1,84 +1,32 @@
-# end-to-end-ML-project-whit-MLflow
+# Wine Quality Prediction: An End-to-End MLOps Solution
 
+Este proyecto implementa un modelo de Machine Learning para predecir la calidad del vino, integrando un ciclo de vida completo de MLOps. La solución abarca desde la validación de datos y el entrenamiento de modelos hasta el despliegue de una web app interactiva para inferencia en tiempo real.
 
-## Workflows
+## 🌟 Características Principales
+- **Arquitectura Modular:** Código organizado en componentes (ingesta, validación, transformación, entrenamiento y evaluación) para máxima mantenibilidad.
+- **MLflow Tracking:** Gestión de experimentos, registro de métricas y versionado de modelos integrados con DagsHub.
+- **Pipeline de Inferencia:** Pipeline dedicado para procesar datos de entrada y generar predicciones consistentes.
+- **Interfaz Web:** Aplicación Flask para facilitar la interacción del usuario con el modelo.
+- **Preparado para Producción:** Incluye configuración de Docker y flujos de CI/CD para despliegues automatizados.
+- **Despliegue en Render:** Despliegue automático de la web app en Render.
 
+## 🛠️ Stack Tecnológico
+- **Lenguaje:** Python 3.11.9.
+- **Machine Learning:** Scikit-Learn (ElasticNet), Pandas, NumPy.
+- **MLOps:** MLflow, DagsHub.
+- **Web Framework:** Flask.
+- **DevOps:** Docker, GitHub Actions.
+- **Despliegue:** Render.
 
+## 🏗️ Arquitectura del Proyecto
+El flujo de trabajo sigue una estructura de etapas claramente definidas:
+1. **Configuración:** Definición de esquemas de datos (`schema.yaml`) e hiperparámetros (`params.yaml`).
+2. **Data Validation:** Verificación automatizada de tipos y presencia de columnas antes del procesamiento.
+3. **Model Training:** Entrenamiento de un regresor ElasticNet con seguimiento de parámetros.
+4. **Deployment:** Exposición del modelo a través de la web app.
 
-1. Update config.yaml 
-2. Update schema.yaml<!-- archivo con informacion de las columnas y data type de la data -->
-3. Update params.yaml <!-- Hiperparametros del modelo  -->
-4. Update the entity
-5. Update the configuration manager in src config
-6. Update the components    <!-- como data validaion, data transformation,  -->
-7. Update the pipeline      <!-- donde se integran y orquestan los components  -->
-8. Update the main.py
-9. Update the app.py
+## 📊 Seguimiento con MLflow y DagsHub
+El proyecto está configurado para registrar automáticamente todos los experimentos en DagsHub. Para visualizar los resultados: https://dagshub.com/fmafelipe/end-to-end-ML-project-whit-MLflow
 
-
-
-
-# How to run?
-### STEPS:
-
-Clone the repository
-
-```bash
-https://github.com/fmafelipe/end-to-end-ML-project-whit-MLflow
-```
-### STEP 01- Create a conda environment after opening the repository
-
-```bash
-conda create -n mlproj python=3.11.9 -y
-```
-
-```bash
-conda activate mlproj
-```
-
-
-### STEP 02- install the requirements
-```bash
-pip install -r requirements.txt
-```
-
-
-```bash
-# Finally run the following command
-python app.py
-```
-
-Now,
-```bash
-open up you local host and port
-```
-
-
-
-## MLflow
-
-[Documentation](https://mlflow.org/docs/latest/index.html)
-
-
-##### cmd
-- mlflow ui
-
-### dagshub
-[dagshub](https://dagshub.com/)
-
-import dagshub
-dagshub.init(repo_owner='fmafelipe', repo_name='end-to-end-ML-project-whit-MLflow', mlflow=True)
-
-import mlflow
-with mlflow.start_run():
-  mlflow.log_param('parameter name', 'value')
-  mlflow.log_metric('metric name', 1)
-
-Run this to export as env variables:
-
-```bash
-
-export MLFLOW_TRACKING_URI=https://dagshub.com/fmafelipe/end-to-end-ML-project-whit-MLflow.mlflow
-
-export MLFLOW_TRACKING_USERNAME=fmafelipe 
-```
+## 📦 Despliegue en Render
+El despliegue de la web app se realiza automáticamente a través de GitHub Actions. Para ingresar a la web app para la inferencia: https://end-to-end-ml-project-8dho.onrender.com
